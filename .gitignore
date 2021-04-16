@@ -1,1 +1,3 @@
 *.session
+.DS_Store
+telegram/__pycache__/
