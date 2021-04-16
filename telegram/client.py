@@ -164,14 +164,15 @@ class Client:
                 poll_date = datetime.datetime.now().strftime("%m/%d (%A) ");
         poll_title = 'Did you attend {} {}?'.format(poll_date, service)
 
-        await self.client.send_message(target_group, file=InputMediaPoll(
-            poll=Poll(
+        message = await self.client.send_message(target_group, file=InputMediaPoll(
+                poll=Poll(
                     id = poll_id,
                     question= poll_title,
                     answers=[PollAnswer('Yes', b'1'), PollAnswer('No', b'0')],
                     public_voters = True
                 )
         ))
+        await self.client.pin_message(target_group, message, notify=True)
     async def remind_poll(self, group_id):
         target_group = await self.get_input_entity(group_id)
         async for message in self.client.iter_messages(target_group):
