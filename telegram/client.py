@@ -99,7 +99,7 @@ class Client:
                 target_group = None
             else:
                 target_group = groups[g_index]
-        #await self.export_members_info_in_group(target_group)
+        await self.export_members_info_in_group(target_group)
     async def get_input_entity(self, entity_id):
         entity = await self.client.get_input_entity(entity_id)
         return entity
@@ -145,30 +145,30 @@ class Client:
             raise TypeError("Please check your group name")
     async def send_poll(self,target_group):
         #target_group = await self.get_input_entity(group_id)
-        poll_id = int(datetime.datetime.now().strftime("%Y%m%d%H%M%S"));
+        #date_now = datetime.datetime.now() + datetime.timedelta(hours=10+24+24+24+24+13)
+        date_now = datetime.datetime.now()
+        poll_id = int(date_now.strftime("%Y%m%d%H%M%S"));
         weekday = datetime.datetime.today().weekday();
-        hour = int(datetime.datetime.now().strftime("%H"));
-        if(hour < 12):
-            poll_date = datetime.datetime.now().strftime("%m/%d(%A)");
+        hour = int(date_now.strftime("%H"));
+        poll_date = date_now.strftime("%m/%d(%A)");
+        if(hour < 12 and weekday != 6):
             service = "Morning Service"
         else:
-            poll_date = datetime.datetime.now().strftime("%m/%d");
             if weekday == 2:
                 service = "Wednesday Service"
             elif weekday == 4:
-                service = "Friday Prayer Service"
+                service = "Prayer Meeting"
             elif weekday == 6:
                 service = "Sunday Service"
             else:
                 service = "Bible Study"
-                poll_date = datetime.datetime.now().strftime("%m/%d (%A) ");
-        poll_title = 'Did you attend {} {}?'.format(poll_date, service)
+        poll_title = 'Do you attend {} {}?'.format(poll_date, service)
 
         message = await self.client.send_message(target_group, file=InputMediaPoll(
                 poll=Poll(
                     id = poll_id,
                     question= poll_title,
-                    answers=[PollAnswer('Yes', b'1'), PollAnswer('No', b'0')],
+                    answers=[PollAnswer('YES', b'1'), PollAnswer('NO', b'0')],
                     public_voters = True
                 )
         ))
