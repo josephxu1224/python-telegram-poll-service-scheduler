@@ -21,16 +21,16 @@ crontab -l
 
 
 # Morning Service Monday to Friday
-0,30 4 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='send'
-0 6 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='remind'
-30 6 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='stop'
+0,30 4 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='send'
+0 6 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='remind'
+30 6 * * 1-5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='stop'
 #
 # Wednesday Service and Friday Prayer Meeting
-0,30 17 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='send'
-0 20 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='remind'
-30 20 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='stop'
+0,30 17 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='send'
+0 20 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='remind'
+30 20 * * 3,5 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='stop'
 #
 # Sunday Service
-0,30 8 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='send'
-0 11 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='remind'
-30 11 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=586242376 --tag='stop'
+0,30 8 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='send'
+0 11 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='remind'
+30 11 * * 0 python3 ~/ScheduleServicePoll/poll_scheduler.py --group-id=1383226409 --tag='stop'
