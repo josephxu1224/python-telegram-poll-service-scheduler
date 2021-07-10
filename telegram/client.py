@@ -159,7 +159,11 @@ class Client:
             elif weekday == 4:
                 service = "Prayer Meeting"
             elif weekday == 6:
-                service = "Sunday Service"
+                if(hour < 7){
+                    service = "Live Broadcast"
+                }else{
+                    service = "Sunday Service"
+                }
             else:
                 service = "Bible Study"
         poll_title = 'Do you attend {} {}?'.format(poll_date, service)
