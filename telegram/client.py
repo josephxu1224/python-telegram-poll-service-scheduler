@@ -24,7 +24,7 @@ class Client:
         self.client_id = 821608836
         self.admin_id = 460150389
         self.api_hash = '03398ae66b58de459de3ed8a67adea40'
-        self.phone = '+14155219187'
+        self.phone = '+14422346701'
         self.client = TelegramClient(self.phone, self.api_id, self.api_hash)
         self.current_date = datetime.datetime.now().strftime("%Y%m%d")
         self.available_groups = {}
@@ -150,29 +150,29 @@ class Client:
         poll_id = int(date_now.strftime("%Y%m%d%H%M%S"));
         weekday = datetime.datetime.today().weekday();
         hour = int(date_now.strftime("%H"));
-        poll_date = date_now.strftime("%m/%d(%A)");
+        poll_date = date_now.strftime("(%m/%d)");
         if(hour < 12 and weekday != 6):
-            service = "Morning Service"
+            weekdays = ["周一","周二","周三","周四","周五","周六"]
+            service = weekdays[weekday] + "早礼拜"
         else:
             if weekday == 2:
-                service = "Wednesday Service"
+                service = "周三礼拜"
             elif weekday == 4:
-                service = "Prayer Meeting"
+                service = "周五祷告会"
             elif weekday == 6:
-                if(hour < 7){
-                    service = "Live Broadcast"
-                }else{
-                    service = "Sunday Service"
-                }
+                if hour < 7:
+                    service = "主日直播"
+                else:
+                    service = "主日礼拜"
             else:
-                service = "Bible Study"
-        poll_title = 'Do you attend {} {}?'.format(poll_date, service)
+                service = "圣经学习"
+        poll_title = '{} {}'.format(service, poll_date)
 
         message = await self.client.send_message(target_group, file=InputMediaPoll(
                 poll=Poll(
                     id = poll_id,
                     question= poll_title,
-                    answers=[PollAnswer('YES', b'1'), PollAnswer('NO', b'0')],
+                    answers=[PollAnswer('onsite', b'3'), PollAnswer('online', b'2'), PollAnswer('absent', b'1'), PollAnswer('others', b'0'),],
                     public_voters = True
                 )
         ))
